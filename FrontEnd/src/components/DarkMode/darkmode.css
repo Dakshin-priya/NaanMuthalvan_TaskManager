@@ -1,0 +1,63 @@
+.dark_mode {
+    margin-top: -1.25rem;
+    /* equivalent to -20px */
+}
+
+.dark_mode_label {
+    width: 2.5rem;
+    /* 40px */
+    height: 1.25rem;
+    /* 20px */
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.15rem;
+    background: #ebebeb;
+    border-radius: 100rem;
+    box-shadow: inset 0 0.3rem 0.9rem rgba(0, 0, 0, 0.4),
+        inset 0 -0.3rem 0.9rem rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.dark_mode_label::after {
+    content: "";
+    width: 0.95rem;
+    height: 0.95rem;
+    position: absolute;
+    top: 0.15rem;
+    left: 0.15rem;
+    background: linear-gradient(180deg, #ffcc89, #d8860b);
+    border-radius: 50%;
+    box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
+    transition: left 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+
+.dark_mode_input {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+.dark_mode_input:checked+.dark_mode_label {
+    background: #2c2c2c;
+    box-shadow: inset 0 0.3rem 0.9rem rgba(255, 255, 255, 0.1),
+        inset 0 -0.3rem 0.9rem rgba(0, 0, 0, 0.5);
+}
+
+.dark_mode_input:checked+.dark_mode_label::after {
+    left: calc(100% - 1.1rem);
+    background: linear-gradient(180deg, #888, #333);
+    transform: translateX(0);
+}
+
+.dark_mode_label:active::after {
+    width: 1.875rem;
+    /* 30px when clicked for a stretchy effect */
+}
+
+.dark_mode_label:hover {
+    filter: brightness(1.05);
+}
